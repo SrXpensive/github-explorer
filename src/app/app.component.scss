@@ -110,3 +110,28 @@
     grid-row: 1;
   }
 }
+
+.users-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.user-card {
+  padding: 20px;
+  background: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 12px;
+  text-align: center;
+
+  img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+  }
+
+  a {
+    color: #58a6ff;
+    text-decoration: none;
+  }
+}

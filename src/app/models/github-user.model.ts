@@ -1,4 +1,5 @@
 export interface GithubUser {
+  id: number
   login: string;
   name: string | null;
   avatar_url: string;
@@ -10,4 +11,10 @@ export interface GithubUser {
   following: number;
   public_repos: number;
   created_at: string;
+}
+
+export interface GithubSearchResponse {
+  total_count: number;
+  incomplete_results: boolean;
+  items: GithubUser[];
 }

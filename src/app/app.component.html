@@ -14,8 +14,24 @@
   </header>
 
   <app-search-bar
-    (search)="searchUser($event)"
+    (search)="searchMultipleUsers($event)"
   />
+
+  @if (users().length > 0) {
+    <section class="users-grid">
+      @for (user of users(); track user.id) {
+        <article class="user-card">
+          <img [src]="user.avatar_url" [alt]="user.login">
+
+          <h3>{{ user.login }}</h3>
+
+          <a [href]="user.html_url" target="_blank">
+            View profile
+          </a>
+        </article>
+      }
+    </section>
+  }
 
   <div class="content-layout">
 

@@ -30,6 +30,8 @@ export class AppComponent {
 
   user = signal<GithubUser | null>(null);
 
+  users = signal<GithubUser[]>([]);
+
   repos = signal<GithubRepo[]>([]);
 
   loading = signal(false);
@@ -141,6 +143,25 @@ export class AppComponent {
       JSON.stringify(this.favorites())
     );
 
+  }
+
+  searchMultipleUsers(query: string): void {
+    this.loading.set(true);
+    this.errorMessage.set(null);
+    this.user.set(null);
+    this.repos.set([]);
+    this.users.set([]);
+
+    this.githubService.searchUsers(query).subscribe({
+      next: (result) => {
+        this.users.set(result.items);
+        this.loading.set(false);
+      },
+      error: () => {
+        this.errorMessage.set('Something went wrong while searching users.');
+        this.loading.set(false);
+      }
+    });
   }
 
 }

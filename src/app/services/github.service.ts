@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 
 import { GithubUser } from '../models/github-user.model';
 import { GithubRepo } from '../models/github-repo.model';
+import { GithubSearchResponse } from '../models/github-user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +28,18 @@ export class GithubService {
         params: {
           per_page: 100,
           sort: 'updated'
+        }
+      }
+    );
+  }
+
+  searchUsers(query: string): Observable<GithubSearchResponse> {
+    return this.http.get<GithubSearchResponse>(
+      `${this.apiUrl}/search/users`,
+      {
+        params: {
+          q: query,
+          per_page: 20
         }
       }
     );
