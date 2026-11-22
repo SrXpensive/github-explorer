@@ -1,0 +1,15 @@
+<form (ngSubmit)="submit()" class="search-form">
+
+  <input
+    type="text"
+    name="username"
+    [(ngModel)]="username"
+    placeholder="Search GitHub username..."
+    autocomplete="off"
+  >
+
+  <button type="submit">
+    Search
+  </button>
+
+</form>

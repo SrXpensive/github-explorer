@@ -1,0 +1,78 @@
+<div class="app-container">
+
+  <header class="header">
+
+    <div>
+      <h1>GitHub Explorer</h1>
+      <p>Discover developers and explore their projects.</p>
+    </div>
+
+    <a href="https://github.com" target="_blank" rel="noopener noreferrer">
+      GitHub
+    </a>
+
+  </header>
+
+  <app-search-bar
+    (search)="searchUser($event)"
+  />
+
+  <div class="content-layout">
+
+    <main class="main-content">
+
+      @if (loading()) {
+
+        <div class="message">
+          Searching GitHub...
+        </div>
+
+      }
+
+      @if (errorMessage()) {
+
+        <div class="error-message">
+          {{ errorMessage() }}
+        </div>
+
+      }
+
+      @if (user(); as currentUser) {
+
+        <app-profile-card
+          [user]="currentUser"
+          [isFavorite]="isFavorite()"
+          (toggleFavorite)="toggleFavorite()"
+        />
+
+        <app-repo-list
+          [repos]="repos()"
+        />
+
+      }
+
+      @if (!user() && !loading() && !errorMessage()) {
+
+        <div class="welcome">
+
+          <h2>Explore GitHub developers</h2>
+
+          <p>
+            Search for any GitHub username to discover
+            their profile and repositories.
+          </p>
+
+        </div>
+
+      }
+
+    </main>
+
+    <app-favorites-list
+      [favorites]="favorites()"
+      (selectUser)="selectFavorite($event)"
+    />
+
+  </div>
+
+</div>

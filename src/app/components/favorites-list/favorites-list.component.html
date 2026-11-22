@@ -1,0 +1,18 @@
+<aside class="favorites">
+
+  <h3>Favorite developers</h3>
+
+  @for (username of favorites; track username) {
+
+    <button (click)="selectUser.emit(username)">
+      <span>★</span>
+      {{ username }}
+    </button>
+
+  } @empty {
+
+    <p>No favorites yet.</p>
+
+  }
+
+</aside>

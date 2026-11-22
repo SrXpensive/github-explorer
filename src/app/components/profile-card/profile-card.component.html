@@ -1,0 +1,65 @@
+<div class="profile-card">
+
+  <a
+    class="profile-link"
+    [href]="user.html_url"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <img
+      [src]="user.avatar_url"
+      [alt]="user.login + ' avatar'"
+      class="avatar"
+    >
+
+    <div class="profile-info">
+
+      <div class="profile-heading">
+        <div>
+          <h2>{{ user.name || user.login }}</h2>
+          <span class="username">@{{ user.login }}</span>
+        </div>
+      </div>
+
+      <p class="bio">
+        {{ user.bio || 'No biography available.' }}
+      </p>
+
+      <div class="metadata">
+        @if (user.location) {
+          <span>📍 {{ user.location }}</span>
+        }
+
+        @if (user.company) {
+          <span>🏢 {{ user.company }}</span>
+        }
+      </div>
+
+      <div class="stats">
+        <div>
+          <strong>{{ user.public_repos }}</strong>
+          <span>Repositories</span>
+        </div>
+
+        <div>
+          <strong>{{ user.followers }}</strong>
+          <span>Followers</span>
+        </div>
+
+        <div>
+          <strong>{{ user.following }}</strong>
+          <span>Following</span>
+        </div>
+      </div>
+
+    </div>
+  </a>
+
+  <button
+    class="favorite-button"
+    (click)="toggleFavorite.emit()"
+  >
+    {{ isFavorite ? '★ Favorited' : '☆ Add favorite' }}
+  </button>
+
+</div>
