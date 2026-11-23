@@ -47,6 +47,7 @@ export class AppComponent {
 
     this.user.set(null);
     this.repos.set([]);
+    this.users.set([]);
 
     forkJoin({
       user: this.githubService.getUser(username),
@@ -164,4 +165,7 @@ export class AppComponent {
     });
   }
 
+  selectSearchResult(username: string): void {
+    this.searchUser(username);
+  }
 }

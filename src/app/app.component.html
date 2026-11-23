@@ -18,20 +18,21 @@
   />
 
   @if (users().length > 0) {
-    <section class="users-grid">
-      @for (user of users(); track user.id) {
-        <article class="user-card">
-          <img [src]="user.avatar_url" [alt]="user.login">
+  <section class="users-grid">
+    @for (user of users(); track user.id) {
+      <button
+        class="user-card"
+        (click)="selectSearchResult(user.login)"
+      >
+        <img [src]="user.avatar_url" [alt]="user.login + ' avatar'">
 
-          <h3>{{ user.login }}</h3>
+        <h3>{{ user.login }}</h3>
 
-          <a [href]="user.html_url" target="_blank">
-            View profile
-          </a>
-        </article>
-      }
-    </section>
-  }
+        <span>View profile →</span>
+      </button>
+    }
+  </section>
+}
 
   <div class="content-layout">
 

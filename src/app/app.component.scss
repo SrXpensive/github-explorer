@@ -112,17 +112,30 @@
 }
 
 .users-grid {
+  margin-top: 20px;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 20px;
 }
 
 .user-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
   padding: 20px;
   background: #161b22;
   border: 1px solid #30363d;
   border-radius: 12px;
-  text-align: center;
+  color: #e6edf3;
+  cursor: pointer;
+  font: inherit;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+
+  &:hover {
+    border-color: #58a6ff;
+    transform: translateY(-3px);
+  }
 
   img {
     width: 80px;
@@ -130,8 +143,12 @@
     border-radius: 50%;
   }
 
-  a {
+  h3 {
+    margin: 0;
+  }
+
+  span {
     color: #58a6ff;
-    text-decoration: none;
+    font-size: 14px;
   }
 }
